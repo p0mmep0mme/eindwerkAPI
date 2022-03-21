@@ -1,0 +1,245 @@
+###
+GET http://localhost:4200/menu
+
+
+###
+GET http://localhost:4200/menu/producten/1
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InBhdHJpY2siLCJpYXQiOjE2NDc1MjM0OTF9.SPcxqLUsA5vipim4SVX-Rd1NV42vJ6_X9eHvfsu679E
+
+###
+GET http://localhost:4200/menu/producten
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InBhdHJpY2siLCJpYXQiOjE2NDc1MjM0OTF9.SPcxqLUsA5vipim4SVX-Rd1NV42vJ6_X9eHvfsu679E
+
+
+
+###
+GET http://localhost:4200/menu
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InBhdHJpY2siLCJpYXQiOjE2NDc1MjM0OTF9.SPcxqLUsA5vipim4SVX-Rd1NV42vJ6_X9eHvfsu679E
+
+###
+GET http://localhost:4200/menu/bestelling/2
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InBhdHJpY2siLCJpYXQiOjE2NDc1MjM0OTF9.SPcxqLUsA5vipim4SVX-Rd1NV42vJ6_X9eHvfsu679E
+
+###
+POST http://localhost:4200/menu/bestelling
+Content-Type: application/json
+
+{
+    "aantal" : 1, 
+    "subtotaalprijs": 50
+}
+
+
+###
+GET http://localhost:4200/menu/ingredienten/2
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InBhdHJpY2siLCJpYXQiOjE2NDc1MjM0OTF9.SPcxqLUsA5vipim4SVX-Rd1NV42vJ6_X9eHvfsu679E
+
+###
+GET http://localhost:4200/menu/ingredienten
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InBhdHJpY2siLCJpYXQiOjE2NDc1MjM0OTF9.SPcxqLUsA5vipim4SVX-Rd1NV42vJ6_X9eHvfsu679E
+
+###
+GET http://localhost:4200/menu/samenstelling
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InBhdHJpY2siLCJpYXQiOjE2NDc1MjM0OTF9.SPcxqLUsA5vipim4SVX-Rd1NV42vJ6_X9eHvfsu679E
+
+###
+GET http://localhost:4200/menu/samenstelling/2
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InBhdHJpY2siLCJpYXQiOjE2NDc1MjM0OTF9.SPcxqLUsA5vipim4SVX-Rd1NV42vJ6_X9eHvfsu679E
+
+###
+GET http://localhost:4200/menu/suballergenen
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InBhdHJpY2siLCJpYXQiOjE2NDc1MjM0OTF9.SPcxqLUsA5vipim4SVX-Rd1NV42vJ6_X9eHvfsu679E
+
+###
+GET http://localhost:4200/menu/suballergenen/2
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InBhdHJpY2siLCJpYXQiOjE2NDc1MjM0OTF9.SPcxqLUsA5vipim4SVX-Rd1NV42vJ6_X9eHvfsu679E
+
+###
+GET http://localhost:4200/menu/subtypes
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InBhdHJpY2siLCJpYXQiOjE2NDc1MjM0OTF9.SPcxqLUsA5vipim4SVX-Rd1NV42vJ6_X9eHvfsu679E
+
+###
+GET http://localhost:4200/menu/subtypes/2
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InBhdHJpY2siLCJpYXQiOjE2NDc1MjM0OTF9.SPcxqLUsA5vipim4SVX-Rd1NV42vJ6_X9eHvfsu679E
+
+
+
+
+
+
+
+
+# *************************restricted*********************
+
+###
+GET http://localhost:4200/restricted/producten
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InNlbW1pIiwiaWF0IjoxNjQ3NTIzNzQwfQ.WjGwVSXEDdD3AR6YrFqhaB7aY4TTRxmBpilWBKLDYQQ
+
+###
+POST http://localhost:4200/restricted/producten
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InNlbW1pIiwiaWF0IjoxNjQ3NTIzNzQwfQ.WjGwVSXEDdD3AR6YrFqhaB7aY4TTRxmBpilWBKLDYQQ
+Content-Type: application/json
+
+{
+    "productNaam": "red label",
+    "SubTypeID": 2,
+    "unitPrijs": 10,
+    "foto": "02022"
+}
+###
+POST http://localhost:4200/restricted/afrekening
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InNlbW1pIiwiaWF0IjoxNjQ3NTIzNzQwfQ.WjGwVSXEDdD3AR6YrFqhaB7aY4TTRxmBpilWBKLDYQQ
+Content-Type: application/json
+
+{
+    "tafelnummer": 5,
+    "totaal": 25,
+    "betaald": 25
+}
+
+
+###
+GET http://localhost:4200/restricted/afrekening
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InNlbW1pIiwiaWF0IjoxNjQ3NTIzNzQwfQ.WjGwVSXEDdD3AR6YrFqhaB7aY4TTRxmBpilWBKLDYQQ
+
+###
+GET http://localhost:4200/restricted
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InBhdHJpY2siLCJpYXQiOjE2NDc1MjM0OTF9.SPcxqLUsA5vipim4SVX-Rd1NV42vJ6_X9eHvfsu679E
+
+###
+GET http://localhost:4200/restricted
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InNlbW1pIiwiaWF0IjoxNjQ3NTIzNzQwfQ.WjGwVSXEDdD3AR6YrFqhaB7aY4TTRxmBpilWBKLDYQQ
+
+###
+GET http://localhost:4200/restricted/bestellingen
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InNlbW1pIiwiaWF0IjoxNjQ3NTIzNzQwfQ.WjGwVSXEDdD3AR6YrFqhaB7aY4TTRxmBpilWBKLDYQQ
+
+###
+POST http://localhost:4200/restricted/bestellingen
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InNlbW1pIiwiaWF0IjoxNjQ3NTIzNzQwfQ.WjGwVSXEDdD3AR6YrFqhaB7aY4TTRxmBpilWBKLDYQQ
+Content-Type: application/json
+
+{
+    "afrekeningID": 1, 
+    "productID": 2,
+    "aantal": 1, 
+    "subtotaalprijs": 50
+}
+
+
+###
+GET http://localhost:4200/restricted/bestellingen/2
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InNlbW1pIiwiaWF0IjoxNjQ3NTIzNzQwfQ.WjGwVSXEDdD3AR6YrFqhaB7aY4TTRxmBpilWBKLDYQQ
+
+
+
+
+
+###
+GET http://localhost:4200/restricted/ingredienten/2
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InNlbW1pIiwiaWF0IjoxNjQ3NTIzNzQwfQ.WjGwVSXEDdD3AR6YrFqhaB7aY4TTRxmBpilWBKLDYQQ
+
+###
+GET http://localhost:4200/restricted/ingredienten
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InNlbW1pIiwiaWF0IjoxNjQ3NTIzNzQwfQ.WjGwVSXEDdD3AR6YrFqhaB7aY4TTRxmBpilWBKLDYQQ
+
+###
+POST http://localhost:4200/restricted/ingredienten
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InNlbW1pIiwiaWF0IjoxNjQ3NTIzNzQwfQ.WjGwVSXEDdD3AR6YrFqhaB7aY4TTRxmBpilWBKLDYQQ
+Content-Type: application/json
+
+{
+    "ingredient": "tomaat"
+}
+
+
+###
+GET http://localhost:4200/restricted/samenstelling
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InNlbW1pIiwiaWF0IjoxNjQ3NTIzNzQwfQ.WjGwVSXEDdD3AR6YrFqhaB7aY4TTRxmBpilWBKLDYQQ
+
+###
+POST http://localhost:4200/restricted/samenstelling
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InNlbW1pIiwiaWF0IjoxNjQ3NTIzNzQwfQ.WjGwVSXEDdD3AR6YrFqhaB7aY4TTRxmBpilWBKLDYQQ
+Content-Type: application/json
+
+{
+    "productID": 1, 
+    "ingredientenID": 1
+}
+
+
+###
+GET http://localhost:4200/restricted/samenstelling/2
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InNlbW1pIiwiaWF0IjoxNjQ3NTIzNzQwfQ.WjGwVSXEDdD3AR6YrFqhaB7aY4TTRxmBpilWBKLDYQQ
+
+###
+GET http://localhost:4200/restricted/suballergenen
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InNlbW1pIiwiaWF0IjoxNjQ3NTIzNzQwfQ.WjGwVSXEDdD3AR6YrFqhaB7aY4TTRxmBpilWBKLDYQQ
+
+###
+POST http://localhost:4200/restricted/suballergenen
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InNlbW1pIiwiaWF0IjoxNjQ3NTIzNzQwfQ.WjGwVSXEDdD3AR6YrFqhaB7aY4TTRxmBpilWBKLDYQQ
+Content-Type: application/json
+
+{
+    "allergie": "zout"
+}
+
+
+###
+GET http://localhost:4200/restricted/suballergenen/2
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InNlbW1pIiwiaWF0IjoxNjQ3NTIzNzQwfQ.WjGwVSXEDdD3AR6YrFqhaB7aY4TTRxmBpilWBKLDYQQ
+
+###
+GET http://localhost:4200/restricted/subtypes
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InNlbW1pIiwiaWF0IjoxNjQ3NTIzNzQwfQ.WjGwVSXEDdD3AR6YrFqhaB7aY4TTRxmBpilWBKLDYQQ
+
+###
+POST http://localhost:4200/restricted/subtypes
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InNlbW1pIiwiaWF0IjoxNjQ3NTIzNzQwfQ.WjGwVSXEDdD3AR6YrFqhaB7aY4TTRxmBpilWBKLDYQQ
+Content-Type: application/json
+
+{
+    "maintype" : 1, 
+    "subtype" : "pizza"
+}
+
+
+###
+GET http://localhost:4200/restricted/subtypes/2
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InNlbW1pIiwiaWF0IjoxNjQ3NTIzNzQwfQ.WjGwVSXEDdD3AR6YrFqhaB7aY4TTRxmBpilWBKLDYQQ
+
+
+
+
+
+# vind gebruiker met id:1
+###
+GET http://localhost:4200/restricted/users/1
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InNlbW1pIiwiaWF0IjoxNjQ3NTIzNzQwfQ.WjGwVSXEDdD3AR6YrFqhaB7aY4TTRxmBpilWBKLDYQQ
+
+
+
+# hieronder login
+###
+GET http://localhost:4200/login
+
+
+###
+POST http://localhost:4200/login
+Content-Type: application/json
+
+{
+    "username": "patrick", 
+    "password": "ww"
+}
+###
+POST http://localhost:4200/login
+Content-Type: application/json
+
+{
+    "username": "semmi", 
+    "password": "wachtw"
+}
+
+
