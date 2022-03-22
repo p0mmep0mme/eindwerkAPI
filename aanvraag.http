@@ -64,11 +64,6 @@ Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InBhd
 
 
 
-
-
-
-
-
 # *************************restricted*********************
 
 ###
@@ -81,11 +76,29 @@ Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InNlb
 Content-Type: application/json
 
 {
-    "productNaam": "red label",
+    "productNaam": "black label",
     "SubTypeID": 2,
     "unitPrijs": 10,
     "foto": "02022"
 }
+
+###
+PUT http://localhost:4200/restricted/producten/3
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InNlbW1pIiwiaWF0IjoxNjQ3NTIzNzQwfQ.WjGwVSXEDdD3AR6YrFqhaB7aY4TTRxmBpilWBKLDYQQ
+Content-Type: application/json
+
+{
+    "productNaam": "jack Daniels update2",
+    "SubTypeID": 1,
+    "unitPrijs": 10,
+    "foto": "10110"
+}
+###
+DELETE http://localhost:4200/restricted/producten/3
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InNlbW1pIiwiaWF0IjoxNjQ3NTIzNzQwfQ.WjGwVSXEDdD3AR6YrFqhaB7aY4TTRxmBpilWBKLDYQQ
+Content-Type: application/json
+
+
 ###
 POST http://localhost:4200/restricted/afrekening
 Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InNlbW1pIiwiaWF0IjoxNjQ3NTIzNzQwfQ.WjGwVSXEDdD3AR6YrFqhaB7aY4TTRxmBpilWBKLDYQQ
@@ -96,6 +109,20 @@ Content-Type: application/json
     "totaal": 25,
     "betaald": 25
 }
+###
+PUT http://localhost:4200/restricted/afrekening/3
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InNlbW1pIiwiaWF0IjoxNjQ3NTIzNzQwfQ.WjGwVSXEDdD3AR6YrFqhaB7aY4TTRxmBpilWBKLDYQQ
+Content-Type: application/json
+
+{
+    "tafelnummer": 49,
+    "totaal": 259,
+    "betaald": 25
+}
+###
+DELETE http://localhost:4200/restricted/afrekening/3
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InNlbW1pIiwiaWF0IjoxNjQ3NTIzNzQwfQ.WjGwVSXEDdD3AR6YrFqhaB7aY4TTRxmBpilWBKLDYQQ
+Content-Type: application/json
 
 
 ###
@@ -126,6 +153,18 @@ Content-Type: application/json
     "subtotaalprijs": 50
 }
 
+###
+POST http://localhost:4200/restricted/bestellingen/4
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InNlbW1pIiwiaWF0IjoxNjQ3NTIzNzQwfQ.WjGwVSXEDdD3AR6YrFqhaB7aY4TTRxmBpilWBKLDYQQ
+Content-Type: application/json
+
+{
+    "afrekeningID": 2, 
+    "productID": 1,
+    "aantal": 19, 
+    "subtotaalprijs": 509
+}
+
 
 ###
 GET http://localhost:4200/restricted/bestellingen/2
@@ -152,6 +191,14 @@ Content-Type: application/json
     "ingredient": "tomaat"
 }
 
+###
+POST http://localhost:4200/restricted/ingredienten/3
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InNlbW1pIiwiaWF0IjoxNjQ3NTIzNzQwfQ.WjGwVSXEDdD3AR6YrFqhaB7aY4TTRxmBpilWBKLDYQQ
+Content-Type: application/json
+
+{
+    "ingredient": "tomaat update"
+}
 
 ###
 GET http://localhost:4200/restricted/samenstelling
@@ -165,6 +212,16 @@ Content-Type: application/json
 {
     "productID": 1, 
     "ingredientenID": 1
+}
+
+###
+POST http://localhost:4200/restricted/samenstelling/3
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InNlbW1pIiwiaWF0IjoxNjQ3NTIzNzQwfQ.WjGwVSXEDdD3AR6YrFqhaB7aY4TTRxmBpilWBKLDYQQ
+Content-Type: application/json
+
+{
+    "productID": 1, 
+    "ingredientenID": 2
 }
 
 
@@ -185,6 +242,15 @@ Content-Type: application/json
     "allergie": "zout"
 }
 
+###
+POST http://localhost:4200/restricted/suballergenen/3
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InNlbW1pIiwiaWF0IjoxNjQ3NTIzNzQwfQ.WjGwVSXEDdD3AR6YrFqhaB7aY4TTRxmBpilWBKLDYQQ
+Content-Type: application/json
+
+{
+    "allergie": "zout update"
+}
+
 
 ###
 GET http://localhost:4200/restricted/suballergenen/2
@@ -200,10 +266,19 @@ Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InNlb
 Content-Type: application/json
 
 {
-    "maintype" : 1, 
-    "subtype" : "pizza"
+    "maintype" : 2, 
+    "subtype" : "kebab"
 }
 
+###
+POST http://localhost:4200/restricted/subtypes/3
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InNlbW1pIiwiaWF0IjoxNjQ3NTIzNzQwfQ.WjGwVSXEDdD3AR6YrFqhaB7aY4TTRxmBpilWBKLDYQQ
+Content-Type: application/json
+
+{
+    "maintype" : 2, 
+    "subtype" : "pizza update"
+}
 
 ###
 GET http://localhost:4200/restricted/subtypes/2

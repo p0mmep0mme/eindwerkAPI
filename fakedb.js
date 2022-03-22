@@ -44,6 +44,25 @@ var setProduct = (req, res) => {
     res.send(result) });
 
 };
+var updateProduct = (req, res) => {
+    db.query(`
+        UPDATE producten
+        SET productNaam='${req.body.productNaam}',
+        SubTypeID=${req.body.SubTypeID},
+        unitPrijs= ${req.body.unitPrijs},
+        foto=${req.body.foto}
+        WHERE productID=${req.params.id}
+    `, (err, result) =>  {if(err)throw err;
+        res.send(result) })
+}
+var deleteProduct = (req, res) => {
+    db.query(`
+    DELETE FROM
+    producten
+    WHERE productID=${req.params.id}
+    `, (err, result) =>  {if(err)throw err;
+        res.send(result) })
+}
 
 var getAllAfrekeningen = (req, res) => {
     db.query(`SELECT * FROM afrekening`, (err, result) => {
@@ -62,6 +81,30 @@ var setAfrekening = (req, res) => {
     res.send(result) });
 
 };
+
+var updateAfrekening = (req, res) => {
+    db.query(`
+        UPDATE
+        afrekening
+        SET
+        tafelnummer=${req.body.tafelnummer},
+        totaal=${req.body.totaal},
+        betaald=${req.body.betaald}
+        WHERE
+        afrekeningID=${req.params.id}
+    `, (err, result) =>  {if(err)throw err;
+        res.send(result) })
+};
+var deleteAfrekening = (req, res) => {
+    db.query(`
+    DELETE FROM
+    afrekening
+    WHERE
+    afrekeningID=${req.params.id}
+    `, (err, result) =>  {if(err)throw err;
+        res.send(result) })
+}
+
 var getAllBestellingen = (req, res) => {
     db.query(`SELECT * FROM bestelling`, (err, result) => {
         if(err)throw err;
@@ -75,10 +118,41 @@ var getBestellingById = (req, res) => {
 
 };
 var setBestelling = (req, res) => {
-    db.query(`INSERT INTO bestelling (aantal, subtotaalprijs) VALUES(${req.body.aantal}, ${req.body.subtotaalprijs})`, (err, result) =>  {if(err)throw err;
+    db.query(`
+    INSERT INTO 
+    bestelling
+    (afrekeningID, productID, aantal, subtotaalprijs)
+    VALUES(
+        ${req.body.afrekeningID},
+        ${req.body.productID},
+        ${req.body.aantal},
+        ${req.body.subtotaalprijs})`,(err, result) =>  {if(err)throw err;
     res.send(result) });
 
 };
+var updateBestelling = (req, res) => {
+    db.query(`
+        UPDATE
+        bestelling
+        SET
+        afrekeningID=${req.body.afrekeningID},
+        productID=${req.body.productID},
+        aantal=${req.body.aantal},
+        subtotaalprijs=${req.body.subtotaalprijs}
+        WHERE
+        bestellingID=${req.params.id}
+    `, (err, result) =>  {if(err)throw err;
+        res.send(result) })
+}
+var deleteBestelling = (req, res) => {
+    db.query(`
+    DELETE FROM
+    bestelling
+    WHERE
+    bestellingID=${req.params.id}
+    `, (err, result) =>  {if(err)throw err;
+        res.send(result) })
+}
 
 var getAllIngredienten = (req, res) => {
     db.query(`SELECT * FROM ingredienten`, (err, result) => {
@@ -97,6 +171,28 @@ var setIngredient = (req, res) => {
     res.send(result) });
 
 };
+var updateIngredient = (req, res) => {
+    db.query(`
+        UPDATE
+        ingredienten
+        SET
+        ingredient='${req.body.ingredient}'
+        WHERE
+        ingredientenID=${req.params.id}
+    `, (err, result) =>  {if(err)throw err;
+        res.send(result) })
+}
+var deleteIngredient = (req, res) => {
+    db.query(`
+    DELETE FROM
+    ingredienten
+    WHERE
+    ingredientenID=${req.params.id}
+    `, (err, result) =>  {if(err)throw err;
+        res.send(result) })
+}
+
+
 var getAllSamenstelling = (req, res) => {
     db.query(`SELECT * FROM samenstelling`, (err, result) => {
         if(err)throw err;
@@ -114,6 +210,28 @@ var setSamenstelling = (req, res) => {
     res.send(result) });
 
 };
+var updateSamenstelling = (req, res) => {
+    db.query(`
+        UPDATE
+        samenstelling
+        SET
+        productID=${req.body.productID},
+        ingredientenID=${req.body.ingredientenID}
+        WHERE
+        samenstellingID=${req.params.id}
+    `, (err, result) =>  {if(err)throw err;
+        res.send(result) })
+}
+
+var deleteSamenstelling = (req, res) => {
+    db.query(`
+    DELETE FROM
+    samenstelling
+    WHERE
+    samenstellingID=${req.params.id}
+    `, (err, result) =>  {if(err)throw err;
+        res.send(result) })
+}
 
 var getSuballergenen = (req, res) => {
     db.query(`SELECT * FROM suballergenen`, (err, result) => {
@@ -132,6 +250,28 @@ var setSuballergeen = (req, res) => {
     res.send(result) });
 
 };
+var updateSuballergeen = (req, res) => {
+    db.query(`
+        UPDATE
+        suballergenen
+        SET
+        allergie='${req.body.allergie}'
+        WHERE
+        subAllergenenID=${req.params.id}
+    `, (err, result) =>  {if(err)throw err;
+        res.send(result) })
+}
+
+var deleteSuballergeen = (req, res) => {
+    db.query(`
+    DELETE FROM
+    suballergenen
+    WHERE
+    subAllergenenID=${req.params.id}
+    `, (err, result) =>  {if(err)throw err;
+        res.send(result) })
+}
+
 var getAllSubTypes = (req, res) => {
     db.query(`SELECT * FROM subtypes`, (err, result) => {
         if(err)throw err;
@@ -149,6 +289,27 @@ var setSubType = (req, res) => {
     res.send(result) });
 
 };
+
+var updateSubType = (req, res) => {
+    db.query(`
+    UPDATE
+    subtypes
+    SET
+    mainType=${req.body.maintype},
+    subType='${req.body.subtype}'
+    WHERE subTypeID=${req.params.id} 
+    `, (err, result) =>  {if(err)throw err;
+        res.send(result) })
+};
+var deleteSubType = (req, res) => {
+    db.query(`
+    DELETE FROM
+    subtypes
+    WHERE
+    subTypeID=${req.params.id}
+    `, (err, result) =>  {if(err)throw err;
+        res.send(result) })
+}
 
 
 
@@ -186,5 +347,19 @@ module.exports = {
     setSuballergeen, 
     getAllSubTypes, 
     getSubTypeById, 
-    setSubType
+    setSubType, 
+    updateSubType, 
+    updateSuballergeen, 
+    updateSamenstelling, 
+    updateIngredient, 
+    updateBestelling, 
+    updateAfrekening, 
+    updateProduct,
+    deleteProduct, 
+    deleteAfrekening, 
+    deleteBestelling, 
+    deleteIngredient,
+    deleteSamenstelling, 
+    deleteSuballergeen,
+    deleteSubType
 };
