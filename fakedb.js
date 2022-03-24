@@ -30,7 +30,7 @@ const users = [
 var getAllProducten = (req, res) => {
     db.query(vraagAlleProducten, (err, result) => {
         if(err)throw err;
-        res.send(result)
+        res.send(result.rows)
     })
 };
 
