@@ -36,12 +36,12 @@ var getAllProducten = (req, res) => {
 
 var getProductById = (req, res) => {
     db.query(`SELECT * FROM Producten WHERE ProductID = ${req.params.id}`, (err, result) =>  {if(err)throw err;
-    res.send(result) });
+    res.send(result.rows) });
 
 };
 var setProduct = (req, res) => {
     db.query(`INSERT INTO producten (productNaam, SubTypeID, unitPrijs, foto) VALUES('${req.body.productNaam}', ${req.body.SubTypeID}, ${req.body.unitPrijs} , ${req.body.foto})`, (err, result) =>  {if(err)throw err;
-    res.send(result) });
+    res.send(result.rows) });
 
 };
 var updateProduct = (req, res) => {
@@ -53,7 +53,7 @@ var updateProduct = (req, res) => {
         foto=${req.body.foto}
         WHERE productID=${req.params.id}
     `, (err, result) =>  {if(err)throw err;
-        res.send(result) })
+        res.send(result.rows) })
 }
 var deleteProduct = (req, res) => {
     db.query(`
@@ -61,24 +61,24 @@ var deleteProduct = (req, res) => {
     producten
     WHERE productID=${req.params.id}
     `, (err, result) =>  {if(err)throw err;
-        res.send(result) })
+        res.send(result.rows) })
 }
 
 var getAllAfrekeningen = (req, res) => {
     db.query(`SELECT * FROM afrekening`, (err, result) => {
         if(err)throw err;
-        res.send(result)
+        res.send(result.rows)
     })
 };
 
 var getAfrekeningById = (req, res) => {
     db.query(`SELECT * FROM afrekening WHERE afrekeningID = ${req.params.id}`, (err, result) =>  {if(err)throw err;
-    res.send(result) });
+    res.send(result.rows) });
 
 };
 var setAfrekening = (req, res) => {
     db.query(`INSERT INTO afrekening (tafelnummer, totaal, betaald) VALUES('${req.body.tafelnummer}', ${req.body.totaal}, ${req.body.betaald})`, (err, result) =>  {if(err)throw err;
-    res.send(result) });
+    res.send(result.rows) });
 
 };
 
@@ -93,7 +93,7 @@ var updateAfrekening = (req, res) => {
         WHERE
         afrekeningID=${req.params.id}
     `, (err, result) =>  {if(err)throw err;
-        res.send(result) })
+        res.send(result.rows) })
 };
 var deleteAfrekening = (req, res) => {
     db.query(`
@@ -102,19 +102,19 @@ var deleteAfrekening = (req, res) => {
     WHERE
     afrekeningID=${req.params.id}
     `, (err, result) =>  {if(err)throw err;
-        res.send(result) })
+        res.send(result.rows) })
 }
 
 var getAllBestellingen = (req, res) => {
     db.query(`SELECT * FROM bestelling`, (err, result) => {
         if(err)throw err;
-        res.send(result)
+        res.send(result.rows)
     })
 };
 
 var getBestellingById = (req, res) => {
     db.query(`SELECT * FROM bestelling WHERE bestellingID = ${req.params.id}`, (err, result) =>  {if(err)throw err;
-    res.send(result) });
+    res.send(result.rows) });
 
 };
 var setBestelling = (req, res) => {
@@ -127,7 +127,7 @@ var setBestelling = (req, res) => {
         ${req.body.productID},
         ${req.body.aantal},
         ${req.body.subtotaalprijs})`,(err, result) =>  {if(err)throw err;
-    res.send(result) });
+    res.send(result.rows) });
 
 };
 var updateBestelling = (req, res) => {
@@ -142,7 +142,7 @@ var updateBestelling = (req, res) => {
         WHERE
         bestellingID=${req.params.id}
     `, (err, result) =>  {if(err)throw err;
-        res.send(result) })
+        res.send(result.rows) })
 }
 var deleteBestelling = (req, res) => {
     db.query(`
@@ -151,24 +151,24 @@ var deleteBestelling = (req, res) => {
     WHERE
     bestellingID=${req.params.id}
     `, (err, result) =>  {if(err)throw err;
-        res.send(result) })
+        res.send(result.rows) })
 }
 
 var getAllIngredienten = (req, res) => {
     db.query(`SELECT * FROM ingredienten`, (err, result) => {
         if(err)throw err;
-        res.send(result)
+        res.send(result.rows)
     })
 };
 
 var getIngredientByID = (req, res) => {
     db.query(`SELECT * FROM ingredienten WHERE ingredientenID = ${req.params.id}`, (err, result) =>  {if(err)throw err;
-    res.send(result) });
+    res.send(result.rows) });
 
 };
 var setIngredient = (req, res) => {
     db.query(`INSERT INTO ingredienten (ingredient) VALUES('${req.body.ingredient}')`, (err, result) =>  {if(err)throw err;
-    res.send(result) });
+    res.send(result.rows) });
 
 };
 var updateIngredient = (req, res) => {
@@ -180,7 +180,7 @@ var updateIngredient = (req, res) => {
         WHERE
         ingredientenID=${req.params.id}
     `, (err, result) =>  {if(err)throw err;
-        res.send(result) })
+        res.send(result.rows) })
 }
 var deleteIngredient = (req, res) => {
     db.query(`
@@ -189,25 +189,25 @@ var deleteIngredient = (req, res) => {
     WHERE
     ingredientenID=${req.params.id}
     `, (err, result) =>  {if(err)throw err;
-        res.send(result) })
+        res.send(result.rows) })
 }
 
 
 var getAllSamenstelling = (req, res) => {
     db.query(`SELECT * FROM samenstelling`, (err, result) => {
         if(err)throw err;
-        res.send(result)
+        res.send(result.rows)
     })
 };
 
 var getSamenstellingById = (req, res) => {
     db.query(`SELECT * FROM samenstelling WHERE samenstellingID = ${req.params.id}`, (err, result) =>  {if(err)throw err;
-    res.send(result) });
+    res.send(result.rows) });
 
 };
 var setSamenstelling = (req, res) => {
     db.query(`INSERT INTO samenstelling ( productID, ingredientenID) VALUES('${req.body.productID}', ${req.body.ingredientenID})`, (err, result) =>  {if(err)throw err;
-    res.send(result) });
+    res.send(result.rows) });
 
 };
 var updateSamenstelling = (req, res) => {
@@ -220,7 +220,7 @@ var updateSamenstelling = (req, res) => {
         WHERE
         samenstellingID=${req.params.id}
     `, (err, result) =>  {if(err)throw err;
-        res.send(result) })
+        res.send(result.rows) })
 }
 
 var deleteSamenstelling = (req, res) => {
@@ -230,24 +230,24 @@ var deleteSamenstelling = (req, res) => {
     WHERE
     samenstellingID=${req.params.id}
     `, (err, result) =>  {if(err)throw err;
-        res.send(result) })
+        res.send(result.rows) })
 }
 
 var getSuballergenen = (req, res) => {
     db.query(`SELECT * FROM suballergenen`, (err, result) => {
         if(err)throw err;
-        res.send(result)
+        res.send(result.rows)
     })
 };
 
 var getSuballergeenById = (req, res) => {
     db.query(`SELECT * FROM suballergenen WHERE subAllergenenID = ${req.params.id}`, (err, result) =>  {if(err)throw err;
-    res.send(result) });
+    res.send(result.rows) });
 
 };
 var setSuballergeen = (req, res) => {
     db.query(`INSERT INTO suballergenen (allergie) VALUES('${req.body.allergie}')`, (err, result) =>  {if(err)throw err;
-    res.send(result) });
+    res.send(result.rows) });
 
 };
 var updateSuballergeen = (req, res) => {
@@ -259,7 +259,7 @@ var updateSuballergeen = (req, res) => {
         WHERE
         subAllergenenID=${req.params.id}
     `, (err, result) =>  {if(err)throw err;
-        res.send(result) })
+        res.send(result.rows) })
 }
 
 var deleteSuballergeen = (req, res) => {
@@ -269,24 +269,24 @@ var deleteSuballergeen = (req, res) => {
     WHERE
     subAllergenenID=${req.params.id}
     `, (err, result) =>  {if(err)throw err;
-        res.send(result) })
+        res.send(result.rows) })
 }
 
 var getAllSubTypes = (req, res) => {
     db.query(`SELECT * FROM subtypes`, (err, result) => {
         if(err)throw err;
-        res.send(result)
+        res.send(result.rows)
     })
 };
 
 var getSubTypeById = (req, res) => {
     db.query(`SELECT * FROM subtypes WHERE SubTypeID = ${req.params.id}`, (err, result) =>  {if(err)throw err;
-    res.send(result) });
+    res.send(result.rows) });
 
 };
 var setSubType = (req, res) => {
     db.query(`INSERT INTO subtypes ( mainType, subType) VALUES(${req.body.maintype}, '${req.body.subtype}')`, (err, result) =>  {if(err)throw err;
-    res.send(result) });
+    res.send(result.rows) });
 
 };
 
@@ -299,7 +299,7 @@ var updateSubType = (req, res) => {
     subType='${req.body.subtype}'
     WHERE subTypeID=${req.params.id} 
     `, (err, result) =>  {if(err)throw err;
-        res.send(result) })
+        res.send(result.rows) })
 };
 var deleteSubType = (req, res) => {
     db.query(`
@@ -308,7 +308,7 @@ var deleteSubType = (req, res) => {
     WHERE
     subTypeID=${req.params.id}
     `, (err, result) =>  {if(err)throw err;
-        res.send(result) })
+        res.send(result.rows) })
 }
 
 
