@@ -325,7 +325,7 @@ var getDrankById = (req, res) => {
 
 };
 var setDrank = (req, res) => {
-    db.query(`INSERT INTO dranken ( type, naam, prijs) VALUES('${req.body.type}', '${req.body.naam}', ${req.body.prijs})`, (err, result) =>  {if(err)throw err;
+    db.query(`INSERT INTO dranken ( type, naam, img, prijs) VALUES('${req.body.type}', '${req.body.naam}','${req.body.img}', ${req.body.prijs})`, (err, result) =>  {if(err)throw err;
     res.send(result.rows) });
 
 };
