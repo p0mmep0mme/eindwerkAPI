@@ -86,7 +86,7 @@ function login(req, res){
 }
 var bestaatUser2 = (username, password) => {
    
-    if(username && password){
+    
         db.query(`SELECT * FROM users WHERE username = ${username} AND password = ${password} `, (err, result) =>  {if(err)throw err;
             if(result.length > 0){
                
@@ -96,10 +96,7 @@ var bestaatUser2 = (username, password) => {
             }
             res.end()
         })
-    }else{
-        res.send('Please enter Username and Password!');
-		res.end();
-    }    
+      
 
 };
 
