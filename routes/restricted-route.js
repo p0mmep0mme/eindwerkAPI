@@ -25,8 +25,8 @@ router.delete("/producten/:id",basicAuth.authRouting.admin, mijndb.deleteProduct
 
 router.get("/dranken",basicAuth.authRouting.admin, mijndb.getAlldranken);
 router.get("/dranken/:id",basicAuth.authRouting.admin, mijndb.getDrankById);
-router.post("/dranken",basicAuth.authRouting.admin, mijndb.setDrank);
-router.put("/dranken/:id",basicAuth.authRouting.admin, mijndb.updateDrank);
+router.post("/dranken", mijndb.setDrank);
+router.put("/dranken/:id", mijndb.updateDrank);
 
 router.delete("/dranken/:id",basicAuth.authRouting.admin, mijndb.deleteDrank);
 
