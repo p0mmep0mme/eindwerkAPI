@@ -71,6 +71,7 @@ const authRouting = {
 }
 
 function login(req, res){
+    console.log(bestaatUser2(req.body.username, req.body.password))
     if(bestaatUser2(req.body.username, req.body.password) !== undefined){
         // req.session.loggedin = true
         // req.session.username = username
@@ -84,7 +85,7 @@ function login(req, res){
         res.json({"message": "niet correct, geen toegang"});
     }
 }
-var bestaatUser2 = (username, password) => {
+const bestaatUser2 = (username, password) => {
    
     
         db.query(`SELECT * FROM users WHERE username = '${username}' AND password = '${password}' `, (err, result) =>  {if(err)throw err;
