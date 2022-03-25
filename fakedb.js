@@ -312,6 +312,46 @@ var deleteSubType = (req, res) => {
 }
 
 
+var getAlldranken = (req, res) => {
+    db.query(`SELECT * FROM dranken`, (err, result) => {
+        if(err)throw err;
+        res.send(result.rows)
+    })
+};
+
+var getDrankById = (req, res) => {
+    db.query(`SELECT * FROM dranken WHERE drankID = ${req.params.id}`, (err, result) =>  {if(err)throw err;
+    res.send(result.rows) });
+
+};
+var setDrank = (req, res) => {
+    db.query(`INSERT INTO dranken ( type, naam, prijs) VALUES('${req.body.type}', '${req.body.naam}', ${req.body.prijs})`, (err, result) =>  {if(err)throw err;
+    res.send(result.rows) });
+
+};
+
+var updateDrank = (req, res) => {
+    db.query(`
+    UPDATE
+    dranken
+    SET
+    type='${req.body.type}',
+    naam='${req.body.naam}',
+    prijs=${req.body.prijs}
+    WHERE drankID=${req.params.id} 
+    `, (err, result) =>  {if(err)throw err;
+        res.send(result.rows) })
+};
+var deleteDrank = (req, res) => {
+    db.query(`
+    DELETE FROM
+    dranken
+    WHERE
+    drankID=${req.params.id}
+    `, (err, result) =>  {if(err)throw err;
+        res.send(result.rows) })
+}
+
 
 function getGebruikers(req, res){
 
@@ -361,5 +401,12 @@ module.exports = {
     deleteIngredient,
     deleteSamenstelling, 
     deleteSuballergeen,
-    deleteSubType
+    deleteSubType,
+    getAlldranken,
+    getDrankById,
+    updateDrank,
+    setDrank,
+    deleteDrank
+
+
 };

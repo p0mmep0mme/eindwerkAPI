@@ -281,6 +281,16 @@ Content-Type: application/json
 }
 
 ###
+POST http://localhost:4200/restricted/subtypes/3
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InNlbW1pIiwiaWF0IjoxNjQ3NTIzNzQwfQ.WjGwVSXEDdD3AR6YrFqhaB7aY4TTRxmBpilWBKLDYQQ
+Content-Type: application/json
+
+{
+    "type" : 2, 
+    "naam" : "pizza update"
+}
+
+###
 GET http://localhost:4200/restricted/subtypes/2
 Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InNlbW1pIiwiaWF0IjoxNjQ3NTIzNzQwfQ.WjGwVSXEDdD3AR6YrFqhaB7aY4TTRxmBpilWBKLDYQQ
 

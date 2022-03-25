@@ -71,7 +71,7 @@ const authRouting = {
 }
 
 function login(req, res){
-    console.log(bestaatUser2)
+   
     if(bestaatUser2 !== undefined){
                
         let payload = { "username" : req.body.username }
