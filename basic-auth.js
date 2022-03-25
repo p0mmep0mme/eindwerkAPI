@@ -1,23 +1,7 @@
 const jwt = require("jsonwebtoken");
 const mijndb = require("./fakedb.js");
 
-var bestaatUser2 = (req, res) => {
-    let username = request.body.username;
-	let password = request.body.password;
-    if(username && password){}
-    db.query(`SELECT * FROM users WHERE username = ${username} AND password = ${password} `, (err, result) =>  {if(err)throw err;
-        if(results.length > 0){
-            req.session.loggedin = true
-            req.session.username = username
-            res.redirect("/menu")
-            res.send(result.rows)
-        }else{
-            res.send('Incorrect Username and/or Password!');
-        }
-        res
-    });
 
-};
 // functies
 var bestaatUser = (username) => {
     let gebruikers = mijndb.users;
