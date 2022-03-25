@@ -3,8 +3,8 @@ const db = require("./database.js");
 
 
 // functies
-var bestaatUser = (username) => {
-    db.query(`SELECT * FROM users WHERE username = ${username}`, (err, result) =>  {if(err)throw err;
+var bestaatUser = (req,res) => {
+    db.query(`SELECT * FROM users WHERE username = '${req.body.username}'`, (err, result) =>  {if(err)throw err;
         if(result.length > 0){
            
             res.send(result.rows)

@@ -326,3 +326,11 @@ Content-Type: application/json
     "password": "admin"
 }
 
+###
+POST https://eindwerk-api.herokuapp.com/login
+Content-Type: application/json
+
+{
+    "username": "patrick", 
+    "password": "pass"
+}
