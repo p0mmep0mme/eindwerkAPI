@@ -1,7 +1,23 @@
 const jwt = require("jsonwebtoken");
 const mijndb = require("./fakedb.js");
 
+var bestaatUser2 = (req, res) => {
+    let username = request.body.username;
+	let password = request.body.password;
+    if(username && password){}
+    db.query(`SELECT * FROM users WHERE username = ${username} AND password = ${password} `, (err, result) =>  {if(err)throw err;
+        if(results.length > 0){
+            req.session.loggedin = true
+            req.session.username = username
+            res.redirect("/menu")
+            res.send(result.rows)
+        }else{
+            res.send('Incorrect Username and/or Password!');
+        }
+        res
+    });
 
+};
 // functies
 var bestaatUser = (username) => {
     let gebruikers = mijndb.users;
@@ -61,14 +77,37 @@ const authRouting = {
 }
 
 function login(req, res){
-    if(bestaatUser(req.body.username, req.body.password) !== undefined){
-        console.log("hier")
+    if(bestaatUser2(req.body.username, req.body.password) !== undefined){
+        req.session.loggedin = true
+        req.session.username = username
+        
         let payload = { "username" : req.body.username };
         let secret = "geheim";
         let token = jwt.sign(payload, secret);
         res.json({"jwt" : token});
+        res.redirect("/menu")
     } else {
         res.json({"message": "niet correct, geen toegang"});
     }
 }
+var bestaatUser2 = (req, res) => {
+    let username = req.body.username;
+	let password = req.body.password;
+    if(username && password){
+        db.query(`SELECT * FROM users WHERE username = ${username} AND password = ${password} `, (err, result) =>  {if(err)throw err;
+            if(result.length > 0){
+               
+                res.send(result.rows)
+            }else{
+                res.send('Incorrect Username and/or Password!')
+            }
+            res.end()
+        })
+    }else{
+        res.send('Please enter Username and Password!');
+		res.end();
+    }    
+
+};
+
  module.exports  = { getToegang, authRouting, login };
