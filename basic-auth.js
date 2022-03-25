@@ -87,7 +87,7 @@ function login(req, res){
 var bestaatUser2 = (username, password) => {
    
     
-        db.query(`SELECT * FROM users WHERE username = ${username} AND password = ${password} `, (err, result) =>  {if(err)throw err;
+        db.query(`SELECT * FROM users WHERE username = '${username}' AND password = '${password}' `, (err, result) =>  {if(err)throw err;
             if(result.length > 0){
                
                 res.send(result.rows)
