@@ -85,8 +85,7 @@ function login(req, res){
         res.json({"message": "niet correct, geen toegang"});
     }
 }
-const bestaatUser2 = (username, password) => {
-   (req, res) =>{
+const bestaatUser2 =  (req, res) =>{
     
         db.query(`SELECT * FROM users WHERE username = '${username}' AND password = '${password}' `, (err, result) =>  {if(err)throw err;
             if(result.length > 0){
@@ -99,6 +98,6 @@ const bestaatUser2 = (username, password) => {
         })
       
 
-}};
+};
 
  module.exports  = { getToegang, authRouting, login };
