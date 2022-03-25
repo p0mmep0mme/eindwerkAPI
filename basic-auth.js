@@ -77,7 +77,7 @@ function login(req, res){
         let payload = { "username" : req.body.username }
         let secret = "geheim"
         let token = jwt.sign(payload, secret)
-        res.redirect("/menu")
+        
         res.json({"jwt" : token})
         
     } else {
