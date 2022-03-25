@@ -74,13 +74,14 @@ function login(req, res){
     console.log(bestaatUser2)
     if(bestaatUser2 !== undefined){
                
-        let payload = { "username" : req.body.username };
-        let secret = "geheim";
-        let token = jwt.sign(payload, secret);
-        res.json({"jwt" : token});
+        let payload = { "username" : req.body.username }
+        let secret = "geheim"
+        let token = jwt.sign(payload, secret)
         res.redirect("/menu")
+        res.json({"jwt" : token})
+        
     } else {
-        res.json({"message": "niet correct, geen toegang"});
+        res.json({"message": "niet correct, geen toegang"})
     }
 }
 const bestaatUser2 =  (req, res) =>{
