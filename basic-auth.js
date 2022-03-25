@@ -73,9 +73,7 @@ const authRouting = {
 function login(req, res){
     console.log(bestaatUser2)
     if(bestaatUser2 !== undefined){
-        req.session.loggedin = true
-        req.session.username = username
-        
+               
         let payload = { "username" : req.body.username };
         let secret = "geheim";
         let token = jwt.sign(payload, secret);
