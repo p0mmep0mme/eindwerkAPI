@@ -11,7 +11,7 @@ app.use(express.urlencoded({
 }));
 
 app.use(cors({
-    origin: "",
+    origin: "*",
     optionsSuccessStatus : 200
 }));
 
