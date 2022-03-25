@@ -71,8 +71,8 @@ const authRouting = {
 }
 
 function login(req, res){
-    console.log(bestaatUser2(req.body.username, req.body.password))
-    if(bestaatUser2(req.body.username, req.body.password) !== undefined){
+    console.log(bestaatUser2)
+    if(bestaatUser2 !== undefined){
         // req.session.loggedin = true
         // req.session.username = username
         
