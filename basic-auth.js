@@ -56,11 +56,11 @@ var  authorizationHandling = (req, res, next, vereisteRol="Admin") => {
             
                     
                 } else {
-                  
-                    console.log("je hebt geen rechten");
+                    res.send("je hebt geen rechten")
+                    
                 }
                        
-                res.send(result.rows[0])
+                
             }else{
                 console.log("unde") 
                 res.send(undefined) 
