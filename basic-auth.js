@@ -4,22 +4,23 @@ const db = require("./database.js");
 
 
 // functies
-var bestaatUser = (user) => {
-    let gebruiker
+var bestaatUser = (req, res, user) => {
+    
     console.log(user)
     // console.log(gebruiker.username)
-    db.query(`SELECT * FROM users WHERE username = '${user}'`, (err, result) =>  {if(err)throw err
+    db.query(`SELECT * FROM users WHERE username = '${user}'`, (err, result) =>  {
+        if(err)throw err
         if(result.length > 0){
             
-            gebruiker = result.rows
+            res.send(result.rows)
         }else{
-            console.log('Incorrect Username and/or Password!')
+            res.send('Incorrect Username and/or Password!')
         }
-        
+        res.end()
         })
         
     
-return gebruiker
+
 
 }
 
