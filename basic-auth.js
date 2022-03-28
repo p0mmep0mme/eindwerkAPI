@@ -3,8 +3,21 @@ const db = require("./database.js");
 
 
 // functies
-var bestaatUser = (req,res) => {
-    const gebruiker = bearerAuthCredentialsFromHeader(req.headers.authorization);
+var bestaatUser = (req, res, user) => {
+    let gebruikerdb = db.query(`SELECT * FROM users WHERE username = '${user}'`, (err, result) =>  {if(err)throw err;
+        if(result.length > 0){
+            
+            res.send(result.rows)
+        }else{
+            res.send('Incorrect Username and/or Password!')
+        }
+        res.end()
+        })
+        if(gebruikerdb != null) {
+            return gebruikerdb;
+        } else {
+            return "niet gevonden";
+        }
     
 
     // let gebruikers = mijndb.users;
@@ -26,29 +39,16 @@ function bearerAuthCredentialsFromHeader(authHeader){
     }
 
 } 
-var authorizationHandling = (req, res, next, vereisteRol="admin") => {
+var authorizationHandling = (req, res, next, vereisteRol="Admin") => {
     const gebruiker = bearerAuthCredentialsFromHeader(req.headers.authorization);
     
     if(gebruiker != null){
-        const rol = () => {
-            let gebruikerdb = db.query(`SELECT * FROM users WHERE username = '${username}'`, (err, result) =>  {if(err)throw err;
-            if(result.length > 0){
-               
-                res.send(result.rows)
-            }else{
-                res.send('Incorrect Username and/or Password!')
-            }
-            res.end()
-            })
-            if(gebruikerdb != null) {
-                return gebruikerdb.rol;
-            } else {
-                return "niet gevonden";
-            }
-        }  
         
-        console.log(rol)
-        if (vereisteRol === rol) {
+        let gebruikerdb = bestaatUser(username)
+        
+        
+        console.log(gebruikerdb.rol)
+        if (vereisteRol === gebruikerdb.rol) {
             console.log("je hebt rechten");
             next();
     
