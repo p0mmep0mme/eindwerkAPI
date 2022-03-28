@@ -59,8 +59,8 @@ var authorizationHandling = (req, res, next, vereisteRol="Admin") => {
         // let gebruikerdb = bestaatUser(gebruiker.username)
         
         console.log(gebruikerdb)
-        console.log(gebruikerdb.rol)
-        if (vereisteRol == gebruikerdb.rol) {
+        console.log(gebruikerdb[0].rol)
+        if (vereisteRol == gebruikerdb[0].rol) {
             console.log("je hebt rechten");
             next();
     
@@ -84,7 +84,7 @@ var getToegang = (req, res, next) => {
 
 const authRouting = {
     user: (req ,res, next) => { authorizationHandling(req, res, next, "user") }, 
-    admin:(req, res, next) => { authorizationHandling(req, res, next, "admin")}
+    admin:(req, res, next) => { authorizationHandling(req, res, next, "Admin")}
 }
 
 function login(req, res){
