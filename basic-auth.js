@@ -4,7 +4,7 @@ const db = require("./database.js");
 
 // functies
 var bestaatUser = (req, res) => {
-    const gebruiker = bearerAuthCredentialsFromHeader(req.headers.authorization);
+    let gebruiker = bearerAuthCredentialsFromHeader(req.headers.authorization);
     db.query(`SELECT * FROM users WHERE username = '${gebruiker.username}'`, (err, result) =>  {if(err)throw err;
         if(result.length > 0){
             
@@ -42,9 +42,9 @@ var authorizationHandling = (req, res, next, vereisteRol="Admin") => {
         
         let gebruikerdb = bestaatUser
         
-        
+        console.log(gebruikerdb)
         console.log(gebruikerdb.rol)
-        if (vereisteRol === gebruikerdb.rol) {
+        if (vereisteRol == gebruikerdb.rol) {
             console.log("je hebt rechten");
             next();
     
