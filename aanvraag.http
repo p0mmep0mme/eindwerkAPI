@@ -291,7 +291,7 @@ Content-Type: application/json
 }
 
 ###
-GET http://localhost:4200/restricted/subtypes/2
+GET https://eindwerk-api.herokuapp.com/restricted/subtypes/2
 Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InNlbW1pIiwiaWF0IjoxNjQ3NTIzNzQwfQ.WjGwVSXEDdD3AR6YrFqhaB7aY4TTRxmBpilWBKLDYQQ
 
 

@@ -4,7 +4,8 @@ const db = require("./database.js");
 
 // functies
 var bestaatUser = (req,res) => {
-    db.query(`SELECT * FROM users WHERE username = '${req.body.username}'`, (err, result) =>  {if(err)throw err;
+    const gebruiker = bearerAuthCredentialsFromHeader(req.headers.authorization);
+    db.query(`SELECT * FROM users WHERE username = '${gebruiker.username}'`, (err, result) =>  {if(err)throw err;
         if(result.length > 0){
            
             res.send(result.rows)
