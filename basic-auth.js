@@ -45,9 +45,11 @@ var authorizationHandling = (req, res, next, vereisteRol="Admin") => {
         
        let gebruikerdb =  db.query(`SELECT * FROM users WHERE username = '${gebruiker.username}'`, (err, result) =>  {
             if(err)throw err
-            if(result.length > 0){            
+            if(result.length > 0){ 
+                console.log(result)        
                 return result.rows
             }else{
+                console.log("unde") 
                 return undefined
             }
             
