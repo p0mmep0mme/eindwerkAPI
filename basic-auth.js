@@ -43,7 +43,7 @@ var authorizationHandling = (req, res, next, vereisteRol="Admin") => {
     
     if(gebruiker != null){
         
-        let gebruikerdb = bestaatUser
+        let gebruikerdb = bestaatUser()
         
         console.log(gebruikerdb)
         console.log(gebruikerdb.rol)
