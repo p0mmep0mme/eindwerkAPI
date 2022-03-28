@@ -55,7 +55,7 @@ GET http://localhost:4200/menu/suballergenen/2
 Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InBhdHJpY2siLCJpYXQiOjE2NDc1MjM0OTF9.SPcxqLUsA5vipim4SVX-Rd1NV42vJ6_X9eHvfsu679E
 
 ###
-GET http://localhost:4200/menu/subtypes
+GET https://eindwerk-api.herokuapp.com/menu/subtypes
 Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InBhdHJpY2siLCJpYXQiOjE2NDc1MjM0OTF9.SPcxqLUsA5vipim4SVX-Rd1NV42vJ6_X9eHvfsu679E
 
 ###
