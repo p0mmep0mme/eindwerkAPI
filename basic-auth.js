@@ -63,7 +63,7 @@ var  authorizationHandling = (req, res, next, vereisteRol="Admin") => {
                 res.send(result.rows[0])
             }else{
                 console.log("unde") 
-                return undefined
+                res.send(undefined) 
             }
             
             })
@@ -72,6 +72,7 @@ var  authorizationHandling = (req, res, next, vereisteRol="Admin") => {
         
        
     }
+    res.end()
    
 }
 
