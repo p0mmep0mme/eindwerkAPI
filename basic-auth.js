@@ -49,7 +49,7 @@ var authorizationHandling = (req, res, next, vereisteRol="Admin") => {
             console.log(result.rows[0].username)
             if(result.fields.username > 0){ 
                 console.log(result)        
-                return result.rows
+                return result.rows[0]
             }else{
                 console.log("unde") 
                 return undefined
@@ -60,8 +60,8 @@ var authorizationHandling = (req, res, next, vereisteRol="Admin") => {
         // let gebruikerdb = bestaatUser(gebruiker.username)
         
         console.log(gebruikerdb)
-        console.log(gebruikerdb[0].rol)
-        if (vereisteRol == gebruikerdb[0].rol) {
+        console.log(gebruikerdb.rol)
+        if (vereisteRol == gebruikerdb.rol) {
             console.log("je hebt rechten");
             next();
     
