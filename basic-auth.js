@@ -47,7 +47,7 @@ var authorizationHandling = (req, res, next, vereisteRol="Admin") => {
             if(err)throw err
             console.log(result.rows[0])
             console.log(result.rows[0].username)
-            if(result.fields.username > 0){ 
+            if(result.rowCount > 0){ 
                 console.log(result)        
                 return result.rows[0]
             }else{
