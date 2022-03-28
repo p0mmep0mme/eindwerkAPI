@@ -337,6 +337,7 @@ var updateDrank = (req, res) => {
     SET
     type='${req.body.type}',
     naam='${req.body.naam}',
+    img='${req.body.img}',
     prijs=${req.body.prijs}
     WHERE drankID=${req.params.id} 
     `, (err, result) =>  {if(err)throw err;
@@ -352,6 +353,46 @@ var deleteDrank = (req, res) => {
         res.send(result.rows) })
 }
 
+
+var getAllUsers = (req, res) => {
+    db.query(`SELECT * FROM users`, (err, result) => {
+        if(err)throw err;
+        res.send(result.rows)
+    })
+};
+
+var getUserById = (req, res) => {
+    db.query(`SELECT * FROM users WHERE userID = ${req.params.id}`, (err, result) =>  {if(err)throw err;
+    res.send(result.rows) });
+
+};
+var setUser = (req, res) => {
+    db.query(`INSERT INTO users ( username, password, rol) VALUES('${req.body.username}', '${req.body.password}','${req.body.rol}')`, (err, result) =>  {if(err)throw err;
+    res.send(result.rows) });
+
+};
+
+var updateUser = (req, res) => {
+    db.query(`
+    UPDATE
+    users
+    SET
+    username='${req.body.username}',
+    password='${req.body.password}',
+    rol='${req.body.rol}'
+    WHERE userID=${req.params.id} 
+    `, (err, result) =>  {if(err)throw err;
+        res.send(result.rows) })
+};
+var deleteUser = (req, res) => {
+    db.query(`
+    DELETE FROM
+    users
+    WHERE
+    userID=${req.params.id}
+    `, (err, result) =>  {if(err)throw err;
+        res.send(result.rows) })
+}
 
 function getGebruikers(req, res){
 
@@ -406,7 +447,12 @@ module.exports = {
     getDrankById,
     updateDrank,
     setDrank,
-    deleteDrank
+    deleteDrank,
+    getAllUsers,
+    getUserById,
+    updateUser,
+    setUser,
+    deleteUser
 
 
 };
