@@ -26,7 +26,7 @@ function bearerAuthCredentialsFromHeader(authHeader){
     }
 
 } 
-var authorizationHandling = (req, res, next, vereisteRol="user") => {
+var authorizationHandling = (req, res, next, vereisteRol="admin") => {
     const gebruiker = bearerAuthCredentialsFromHeader(req.headers.authorization);
     
     if(gebruiker != null){
