@@ -45,7 +45,9 @@ var authorizationHandling = (req, res, next, vereisteRol="admin") => {
             } else {
                 return "niet gevonden";
             }
-        }   
+        }  
+        
+        console.log(rol)
         if (vereisteRol === rol) {
             console.log("je hebt rechten");
             next();
