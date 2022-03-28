@@ -8,14 +8,14 @@ var bestaatUser = (user) => {
     // let gebruiker = bearerAuthCredentialsFromHeader(req.headers.authorization);
     console.log(user)
     // console.log(gebruiker.username)
-    db.query(`SELECT * FROM users WHERE username = '${user}'`, (err, result) =>  {if(err)throw err;
+    return db.query(`SELECT * FROM users WHERE username = '${user}'`, (err, result) =>  {if(err)throw err;
         if(result.length > 0){
             
             return (result.rows)
         }else{
             console.log('Incorrect Username and/or Password!')
         }
-        res.end()
+        
         })
         
     
