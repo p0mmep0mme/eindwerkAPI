@@ -1,10 +1,13 @@
 const jwt = require("jsonwebtoken");
+const { client_encoding } = require("pg/lib/defaults");
 const db = require("./database.js");
 
 
 // functies
 var bestaatUser = (req, res) => {
     let gebruiker = bearerAuthCredentialsFromHeader(req.headers.authorization);
+    console.log(gebruiker)
+    console.log(gebruiker.username)
     db.query(`SELECT * FROM users WHERE username = '${gebruiker.username}'`, (err, result) =>  {if(err)throw err;
         if(result.length > 0){
             
