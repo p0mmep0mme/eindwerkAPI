@@ -23,12 +23,11 @@ router.put("/producten/:id",basicAuth.authRouting.admin, mijndb.updateProduct);
 router.delete("/producten/:id",basicAuth.authRouting.admin, mijndb.deleteProduct);
 
 
-router.get("/dranken", mijndb.getAlldranken);
-router.get("/dranken/:id", mijndb.getDrankById);
-router.post("/dranken", mijndb.setDrank);
-router.put("/dranken/:id", mijndb.updateDrank);
-
-router.delete("/dranken/:id", mijndb.deleteDrank);
+router.get("/dranken",basicAuth.authRouting.admin, mijndb.getAlldranken);
+router.get("/dranken/:id",basicAuth.authRouting.admin, mijndb.getDrankById);
+router.post("/dranken",basicAuth.authRouting.admin, mijndb.setDrank);
+router.put("/dranken/:id",basicAuth.authRouting.admin, mijndb.updateDrank);
+router.delete("/dranken/:id",basicAuth.authRouting.admin, mijndb.deleteDrank);
 
 
 
@@ -70,6 +69,12 @@ router.get("/subtypes",basicAuth.authRouting.admin, mijndb.getAllSubTypes);
 router.post("/subtypes",basicAuth.authRouting.admin, mijndb.setSubType);
 router.put("/subtypes/:id",basicAuth.authRouting.admin, mijndb.updateSubType);
 router.delete("/subtypes/:id",basicAuth.authRouting.admin, mijndb.deleteSubType);
+
+router.get("/users/:id",basicAuth.authRouting.admin, mijndb.getUserById);
+router.get("/users",basicAuth.authRouting.admin, mijndb.getAllUsers);
+router.post("/users",basicAuth.authRouting.admin, mijndb.setUser);
+router.put("/users/:id",basicAuth.authRouting.admin, mijndb.updateUser);
+router.delete("/users/:id",basicAuth.authRouting.admin, mijndb.deleteUser);
 
 
 

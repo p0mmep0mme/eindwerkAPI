@@ -1,7 +1,6 @@
 var express = require("express");
 const mijndb = require("../fakedb.js");
-const basicAuth= require("../basic-auth.js");
-const db = require("../database.js");
+
 
 const router = express.Router();
 const baseuri = "/menu";
@@ -26,27 +25,9 @@ router.get("/suballergenen", mijndb.getSuballergenen);
 router.get("/subtypes/:id", mijndb.getSubTypeById);
 router.get("/subtypes", mijndb.getAllSubTypes);
 
-
-
-
-
-
+router.get("/dranken", mijndb.getAlldranken);
+router.get("/dranken/:id", mijndb.getDrankById);
 
 router.get("/afrekening/:id",mijndb.getAfrekeningById);
 
-
-// eten
-// router.get("/eten", mijndb.getEten);
-// router.get("/eten/:id", mijndb.getEenGerecht);
-
-// bestelling
-// router.get("/bestellingen/:id", mijndb.getBestelling);
-
-// BESTELINGGEN MAKEN
-
-// router.post("/bestellingen", mijndb.setBestelling);
-
-
-
 module.exports = (app) => { app.use(baseuri, router); } 
-// todo path aanpassen
