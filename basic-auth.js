@@ -4,16 +4,16 @@ const db = require("./database.js");
 
 
 // functies
-var bestaatUser = (req, res) => {
-    let gebruiker = bearerAuthCredentialsFromHeader(req.headers.authorization);
-    console.log(gebruiker)
-    console.log(gebruiker.username)
-    db.query(`SELECT * FROM users WHERE username = '${gebruiker.username}'`, (err, result) =>  {if(err)throw err;
+var bestaatUser = (user) => {
+    // let gebruiker = bearerAuthCredentialsFromHeader(req.headers.authorization);
+    console.log(user)
+    // console.log(gebruiker.username)
+    db.query(`SELECT * FROM users WHERE username = '${user}'`, (err, result) =>  {if(err)throw err;
         if(result.length > 0){
             
-            res.send(result.rows)
+            return (result.rows)
         }else{
-            res.send('Incorrect Username and/or Password!')
+            console.log('Incorrect Username and/or Password!')
         }
         res.end()
         })
@@ -43,7 +43,7 @@ var authorizationHandling = (req, res, next, vereisteRol="Admin") => {
     
     if(gebruiker != null){
         
-        let gebruikerdb = bestaatUser()
+        let gebruikerdb = bestaatUser(gebruiker.username)
         
         console.log(gebruikerdb)
         console.log(gebruikerdb.rol)
