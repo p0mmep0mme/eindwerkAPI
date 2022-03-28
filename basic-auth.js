@@ -45,8 +45,9 @@ var authorizationHandling = (req, res, next, vereisteRol="Admin") => {
         console.log(gebruiker.username)
        let gebruikerdb =  db.query(`SELECT * FROM users WHERE username = '${gebruiker.username}'`, (err, result) =>  {
             if(err)throw err
-            console.log(result)
-            if(result.rowCount > 0){ 
+            console.log(result.fields[1])
+            console.log(result.fields.username)
+            if(result.fields.username > 0){ 
                 console.log(result)        
                 return result.rows
             }else{
