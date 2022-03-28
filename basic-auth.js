@@ -4,7 +4,7 @@ const db = require("./database.js");
 
 
 // functies
-var bestaatUser = (req, res, user) => {
+var bestaatUser = (req, res, user="admin") => {
     
     console.log(user)
     // console.log(gebruiker.username)
@@ -41,7 +41,7 @@ function bearerAuthCredentialsFromHeader(authHeader){
 var authorizationHandling = (req, res, next, vereisteRol="Admin") => {
     const gebruiker = bearerAuthCredentialsFromHeader(req.headers.authorization);
     
-    if(gebruiker != null){
+    if(gebruiker != undefined){
        let gebruikerdb =  db.query(`SELECT * FROM users WHERE username = '${gebruiker.username}'`, (err, result) =>  {
             if(err)throw err
             if(result.length > 0){            
