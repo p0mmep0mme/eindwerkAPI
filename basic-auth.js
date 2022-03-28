@@ -5,13 +5,13 @@ const db = require("./database.js");
 
 // functies
 var bestaatUser = (user) => {
-    // let gebruiker = bearerAuthCredentialsFromHeader(req.headers.authorization);
+    let gebruiker
     console.log(user)
     // console.log(gebruiker.username)
-    return db.query(`SELECT * FROM users WHERE username = '${user}'`, (err, result) =>  {if(err)throw err;
+    db.query(`SELECT * FROM users WHERE username = '${user}'`, (err, result) =>  {if(err)throw err
         if(result.length > 0){
             
-            return (result.rows)
+            gebruiker = result.rows
         }else{
             console.log('Incorrect Username and/or Password!')
         }
@@ -19,7 +19,7 @@ var bestaatUser = (user) => {
         })
         
     
-
+return gebruiker
 
 }
 
