@@ -42,14 +42,15 @@ var authorizationHandling = (req, res, next, vereisteRol="Admin") => {
     const gebruiker = bearerAuthCredentialsFromHeader(req.headers.authorization);
     
     if(gebruiker != undefined){
+        
        let gebruikerdb =  db.query(`SELECT * FROM users WHERE username = '${gebruiker.username}'`, (err, result) =>  {
             if(err)throw err
             if(result.length > 0){            
-                res.send(result.rows)
+                return result.rows
             }else{
-                res.send('Incorrect Username and/or Password!')
+                return undefined
             }
-            res.end()
+            
             })
         
         // let gebruikerdb = bestaatUser(gebruiker.username)
