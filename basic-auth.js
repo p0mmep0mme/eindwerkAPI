@@ -72,7 +72,7 @@ var  authorizationHandling = (req, res, next, vereisteRol="Admin") => {
         
        
     }
-    res.end()
+    
    
 }
 
