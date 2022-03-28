@@ -1,31 +1,12 @@
 const jwt = require("jsonwebtoken");
-const { client_encoding } = require("pg/lib/defaults");
+// const { client_encoding } = require("pg/lib/defaults");
 const db = require("./database.js");
 
 
 // functies
-var bestaatUser = (req, res, user="admin") => {
-    
-    console.log(user)
-    // console.log(gebruiker.username)
-    db.query(`SELECT * FROM users WHERE username = '${user}'`, (err, result) =>  {
-        if(err)throw err
-        if(result.length > 0){            
-            res.send(result.rows)
-        }else{
-            res.send('Incorrect Username and/or Password!')
-        }
-        res.end()
-        })
-        
-    
 
 
-}
 
-var returnRol = (username) => {
-    
-}
 
 function bearerAuthCredentialsFromHeader(authHeader){
     const encodedAuth = (authHeader || '').split(' ')[1] || '' // getting the part after Basic
@@ -40,16 +21,15 @@ function bearerAuthCredentialsFromHeader(authHeader){
 } 
 var  authorizationHandling = (req, res, next, vereisteRol="Admin") => {
     const gebruiker = bearerAuthCredentialsFromHeader(req.headers.authorization);
-    let gebruikerdb
+    
     if(gebruiker != undefined){
-        console.log(gebruiker.username)
-       gebruikerdb =  db.query(`SELECT * FROM users WHERE username = '${gebruiker.username}'`, (err, result) =>  {
-            if(err){throw err}
-            console.log(result.rows[0])
-            console.log(result.rows[0].username)
+        
+      db.query(`SELECT * FROM users WHERE username = '${gebruiker.username}'`, (err, result) =>  {
+            if(err)throw err
+            
             if(result.rowCount > 0){ 
                 
-                console.log(result.rows[0].rol)
+                
                 if (vereisteRol == result.rows[0].rol) {
                     console.log("je hebt rechten");
                     next();
@@ -62,13 +42,13 @@ var  authorizationHandling = (req, res, next, vereisteRol="Admin") => {
                        
                 
             }else{
-                console.log("unde") 
+                 
                 res.send(undefined) 
             }
             
             })
         
-        // let gebruikerdb = bestaatUser(gebruiker.username)
+        
         
        
     }
@@ -92,7 +72,7 @@ const authRouting = {
 
 function login(req, res){
    
-    if(bestaatUser2 !== undefined){
+    if(bestaatUser !== undefined){
                
         let payload = { "username" : req.body.username }
         let secret = "geheim"
@@ -104,7 +84,7 @@ function login(req, res){
         res.json({"message": "niet correct, geen toegang"})
     }
 }
-const bestaatUser2 =  (req, res) =>{
+const bestaatUser =  (req, res) =>{
     
         db.query(`SELECT * FROM users WHERE username = '${req.body.username}' AND password = '${req.body.password}' `, (err, result) =>  {if(err)throw err;
             if(result.length > 0){
