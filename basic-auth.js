@@ -10,8 +10,7 @@ var bestaatUser = (req, res, user) => {
     // console.log(gebruiker.username)
     db.query(`SELECT * FROM users WHERE username = '${user}'`, (err, result) =>  {
         if(err)throw err
-        if(result.length > 0){
-            
+        if(result.length > 0){            
             res.send(result.rows)
         }else{
             res.send('Incorrect Username and/or Password!')
@@ -43,8 +42,17 @@ var authorizationHandling = (req, res, next, vereisteRol="Admin") => {
     const gebruiker = bearerAuthCredentialsFromHeader(req.headers.authorization);
     
     if(gebruiker != null){
+       let gebruikerdb =  db.query(`SELECT * FROM users WHERE username = '${user}'`, (err, result) =>  {
+            if(err)throw err
+            if(result.length > 0){            
+                res.send(result.rows)
+            }else{
+                res.send('Incorrect Username and/or Password!')
+            }
+            res.end()
+            })
         
-        let gebruikerdb = bestaatUser(gebruiker.username)
+        // let gebruikerdb = bestaatUser(gebruiker.username)
         
         console.log(gebruikerdb)
         console.log(gebruikerdb.rol)
