@@ -40,9 +40,9 @@ function bearerAuthCredentialsFromHeader(authHeader){
 
 } 
 var authorizationHandling = (req, res, next, vereisteRol="Admin") => {
-    const gebruiker = bearerAuthCredentialsFromHeader(req.headers.authorization);
+    const username = bearerAuthCredentialsFromHeader(req.headers.authorization);
     
-    if(gebruiker != null){
+    if(username != null){
         
         let gebruikerdb = bestaatUser(username)
         
