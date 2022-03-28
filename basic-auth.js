@@ -12,20 +12,7 @@ var bestaatUser = (req,res) => {
 }
 
 var returnRol = (username) => {
-    let gebruiker = db.query(`SELECT * FROM users WHERE username = '${username}'`, (err, result) =>  {if(err)throw err;
-        if(result.length > 0){
-           
-            res.send(result.rows)
-        }else{
-            res.send('Incorrect Username and/or Password!')
-        }
-        res.end()
-    })
-    if(gebruiker != null) {
-        return gebruiker.rol;
-    } else {
-        return "niet gevonden";
-    }
+    
 }
 
 function bearerAuthCredentialsFromHeader(authHeader){
@@ -43,8 +30,22 @@ var authorizationHandling = (req, res, next, vereisteRol="user") => {
     const gebruiker = bearerAuthCredentialsFromHeader(req.headers.authorization);
     
     if(gebruiker != null){
-        let rol = returnRol(gebruiker.username);
-
+        const rol = () => {
+            let gebruikerdb = db.query(`SELECT * FROM users WHERE username = '${username}'`, (err, result) =>  {if(err)throw err;
+            if(result.length > 0){
+               
+                res.send(result.rows)
+            }else{
+                res.send('Incorrect Username and/or Password!')
+            }
+            res.end()
+            })
+            if(gebruikerdb != null) {
+                return gebruikerdb.rol;
+            } else {
+                return "niet gevonden";
+            }
+        }   
         if (vereisteRol === rol) {
             console.log("je hebt rechten");
             next();
