@@ -48,8 +48,19 @@ var  authorizationHandling = (req, res, next, vereisteRol="Admin") => {
             console.log(result.rows[0])
             console.log(result.rows[0].username)
             if(result.rowCount > 0){ 
+                
+                console.log(result.rows[0].rol)
+                if (vereisteRol == result.rows[0].rol) {
+                    console.log("je hebt rechten");
+                    next();
+            
+                    
+                } else {
+                  
+                    console.log("je hebt geen rechten");
+                }
                        
-                return result.rows[0]
+                res.send(result.rows[0])
             }else{
                 console.log("unde") 
                 return undefined
@@ -59,17 +70,7 @@ var  authorizationHandling = (req, res, next, vereisteRol="Admin") => {
         
         // let gebruikerdb = bestaatUser(gebruiker.username)
         
-        console.log(gebruikerdb)
-        console.log(gebruikerdb.rol)
-        if (vereisteRol == gebruikerdb.rol) {
-            console.log("je hebt rechten");
-            next();
-    
-            
-        } else {
-          
-            console.log("je hebt geen rechten");
-        }
+       
     }
    
 }
