@@ -5,7 +5,14 @@ const db = require("./database.js");
 // functies
 var bestaatUser = (req,res) => {
     const gebruiker = bearerAuthCredentialsFromHeader(req.headers.authorization);
-    db.query(`SELECT * FROM users WHERE username = '${gebruiker.username}'`, (err, result) =>  {if(err)throw err;
+    
+
+    // let gebruikers = mijndb.users;
+    // return gebruikers.find(gebruiker => ((gebruiker.username === username) ));
+}
+
+var returnRol = (username) => {
+    let gebruiker = db.query(`SELECT * FROM users WHERE username = '${username}'`, (err, result) =>  {if(err)throw err;
         if(result.length > 0){
            
             res.send(result.rows)
@@ -14,13 +21,6 @@ var bestaatUser = (req,res) => {
         }
         res.end()
     })
-
-    // let gebruikers = mijndb.users;
-    // return gebruikers.find(gebruiker => ((gebruiker.username === username) ));
-}
-
-var returnRol = (username) => {
-    let gebruiker = bestaatUser(username);
     if(gebruiker != null) {
         return gebruiker.rol;
     } else {
@@ -51,6 +51,7 @@ var authorizationHandling = (req, res, next, vereisteRol="user") => {
     
             
         } else {
+          
             console.log("je hebt geen rechten");
         }
     }

@@ -292,7 +292,7 @@ Content-Type: application/json
 
 ###
 GET https://eindwerk-api.herokuapp.com/restricted/subtypes/2
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InNlbW1pIiwiaWF0IjoxNjQ3NTIzNzQwfQ.WjGwVSXEDdD3AR6YrFqhaB7aY4TTRxmBpilWBKLDYQQ
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiaWF0IjoxNjQ4NDUzNjkxfQ.Lte8hIR6Hvx1V3z-LK61AWgXRFGXfUsEfEqcLa-E9vY
 
 
 
