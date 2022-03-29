@@ -72,24 +72,28 @@ const authRouting = {
 
 function login(req, res){
    
-    if(bestaatUser() !== undefined){
+    // if(bestaatUser() !== undefined){
                
-        let payload = { "username" : req.body.username }
-        let secret = "geheim"
-        let token = jwt.sign(payload, secret)
+       
         
-        res.json({"jwt" : token})
         
-    } else {
-        res.json({"message": "niet correct, geen toegang"})
-    }
+    // } else {
+    //     res.json({"message": "niet correct, geen toegang"})
+    // }
+
+    bestaatUser()
 }
 const bestaatUser =  (req, res) =>{
     
         db.query(`SELECT * FROM users WHERE username = '${req.body.username}' AND password = '${req.body.password}' `, (err, result) =>  {if(err)throw err;
             if(result.length > 0){
+
+                let payload = { "username" : req.body.username }
+                let secret = "geheim"
+                let token = jwt.sign(payload, secret)
+                res.json({"jwt" : token})
                
-                res.send(result.rows)
+                
             }else{
                 res.send('Incorrect Username and/or Password!')
             }
