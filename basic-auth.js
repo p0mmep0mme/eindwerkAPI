@@ -72,7 +72,7 @@ const authRouting = {
 
 function login(req, res){
    
-    if(bestaatUser !== undefined){
+    if(bestaatUser() !== undefined){
                
         let payload = { "username" : req.body.username }
         let secret = "geheim"
