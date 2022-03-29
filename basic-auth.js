@@ -86,7 +86,8 @@ function login(req, res){
 const bestaatUser =  (req, res) =>{
     
         db.query(`SELECT * FROM users WHERE username = '${req.body.username}' AND password = '${req.body.password}' `, (err, result) =>  {if(err)throw err;
-            if(result.rows > 0){
+            console.log(result)
+            if(result.rowCount > 0){
 
                 let payload = { "username" : req.body.username }
                 let secret = "geheim"

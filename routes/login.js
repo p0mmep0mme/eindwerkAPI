@@ -5,7 +5,7 @@ const router = express.Router();
 const baseurl = "/login";
 
 router.post("/", basicAuth.login);
-router.get("/", basicAuth.login);
+// router.get("/", basicAuth.login);
 
 //goed
 
