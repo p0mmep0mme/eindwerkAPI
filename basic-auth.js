@@ -1,5 +1,5 @@
 const jwt = require("jsonwebtoken");
-// const { client_encoding } = require("pg/lib/defaults");
+
 const db = require("./database.js");
 
 
@@ -12,7 +12,7 @@ function bearerAuthCredentialsFromHeader(authHeader){
     const encodedAuth = (authHeader || '').split(' ')[1] || '' // getting the part after Basic
 
     if (encodedAuth == null || encodedAuth === ''){
-        console.log("isnull");
+        console.error("isnull");
         return null;
     } else { 
         return jwt.verify(encodedAuth, "geheim");
@@ -31,7 +31,7 @@ var  authorizationHandling = (req, res, next, vereisteRol="Admin") => {
                 
                 
                 if (vereisteRol == result.rows[0].rol) {
-                    console.log("je hebt rechten");
+                    console..log("je hebt rechten");
                     next();
             
                     
