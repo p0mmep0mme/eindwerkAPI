@@ -81,7 +81,7 @@ function login(req, res){
     //     res.json({"message": "niet correct, geen toegang"})
     // }
 
-    bestaatUser()
+    bestaatUser(req, res)
 }
 const bestaatUser =  (req, res) =>{
     

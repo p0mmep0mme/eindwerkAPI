@@ -332,7 +332,7 @@ POST https://eindwerk-api.herokuapp.com/login
 Content-Type: application/json
 
 {
-    "username": "admi", 
+    "username": "admin", 
     "password": "admin"
 }
 
