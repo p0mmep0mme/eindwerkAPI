@@ -31,7 +31,7 @@ var  authorizationHandling = (req, res, next, vereisteRol="Admin") => {
                 
                 
                 if (vereisteRol == result.rows[0].rol) {
-                    console..log("je hebt rechten");
+                    console.log("je hebt rechten");
                     next();
             
                     
